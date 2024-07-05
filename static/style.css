@@ -1,0 +1,262 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  --background-color: #18181B;
+  --text-color: #A1A1AA;
+  --textColorGreen: #7be366;
+  --textColorRed: #e36686;
+  --textColorBlack: #18181B;
+
+  --card-background-color: rgba(255, 255, 255, .015);
+  --card-background-red: rgba(255, 80, 80, 0.632);
+  --card-border-color: rgba(255, 255, 255, 0.1);
+  --card-box-shadow-1: rgba(0, 0, 0, 0.05);
+  --card-box-shadow-1-y: 3px;
+  --card-box-shadow-1-blur: 6px;
+
+  background-color: var(--background-color);
+
+}
+* {box-sizing:border-box}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;900&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+body{
+	background: var(--background-color);
+}
+
+
+.mainWrap{
+	padding: 20px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.mainWrap .mainCard{
+	padding: 15px 25px;
+	width: 25%;
+}
+
+.mainWrap .innerCard{
+	border-radius: 10px;
+	padding: 35px 20px;
+	width: 225px;
+	height: 215px;
+  	height: 100%;
+	width: 100%;
+	justify-content: space-between;
+	flex-direction: column;
+	display: flex;
+}
+
+.remainingCard{
+	background: var(--card-background-color);
+}
+
+.completedCard{
+	background: var(--card-background-red);
+}
+
+.fullCard{
+	height: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+	align-items: center;
+	margin-left: auto; 
+	margin-right: 0;
+}
+
+.mainWrap .mainCard img{
+	width: 80px;
+	height: 80px;
+	margin-bottom: 5px;
+}
+
+.mainWrap .mainCard .jobTitle{
+	color: #e36686;
+	color: #7be366;
+	font-weight: 900;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+
+
+.mainWrap .mainCard .real_name{
+	color: #b6c0c2;
+	font-size: 12px;
+	font-weight: 100;
+	margin: 5px 0 10px;
+
+}
+
+.real_name{
+	display: flex;
+	margin-left: auto; 
+	margin-right: 0;
+}
+
+.mainWrap .mainCard .film{
+	font-size: 14px;
+	line-height: 24px;
+	color: #7b8ca0;
+}
+
+@media screen and (max-width: 1024px){
+	.mainWrap .mainCard{
+		width: 33%;
+	}
+}
+
+@media screen and (max-width: 768px){
+	.mainWrap .mainCard{
+		width: 50%;
+	}
+	.wrapper .header{
+		font-size: 16px;
+		height: 60px;
+	}
+}
+
+@media screen and (max-width: 568px){
+	.mainWrap .mainCard{
+		width: 100%;
+	}
+	.wrapper .header{
+		font-size: 14px;
+	}
+}
+
+.rightTick button{
+	padding: 10px;
+	border-radius: 5px;
+	border-color: var(--text-color);
+	outline: none;
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	font-weight: bold;
+	background-color: var(--card-background-color);
+	border: none;
+	border-radius: 45px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
+	text-decoration: none;
+	width: 100%;
+	height: 50px;
+}
+
+.rightTick{
+	height: 100%;
+	flex: 1 0 0;
+}
+
+.yesButton{
+	color: var(--textColorGreen);
+}
+.yesButton:hover{
+	color: var(--textColorBlack);
+	background-color: var(--textColorGreen);
+}
+
+.noButton{
+	color: var(--textColorRed);
+}
+.noButton:hover{
+	color: var(--textColorBlack);
+	background-color: var(--textColorRed);
+}
+
+.delButton{
+	color: var(--textColorRed);
+}
+.delButton:hover{
+	color: var(--textColorBlack);
+	background-color: var(--textColorRed);
+}
+
+
+/* .rightTickGreyButton{
+	border: none;
+	background-color: transparent;	
+	padding: 0px;
+	margin: 0px;
+	outline: none;
+	display: flex;
+	color: var(--text-color);
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+}
+
+.rightTickGreyButton:hover{
+	cursor:crosshair;
+} */
+
+.openLinkButton {
+  padding: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  margin-left: auto;
+  margin-right: 0;
+  }
+
+.yesNoCard{
+	border-radius: 10px;
+	padding: 35px 20px;
+	width: 500px;
+	height: 300px;
+	background-color: var(--background-color);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	display: none;
+}
+
+.opacityGame{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #a3a3a3;
+	opacity: .7;
+}
+
+.buttons{
+	width: 100%;
+	display: flex;
+	bottom: 0;
+}

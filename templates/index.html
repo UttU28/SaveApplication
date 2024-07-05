@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Menu</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <script src="{{ url_for('static',filename='main.js') }}" defer></script>
+</head>
+<body>
+
+    <div class="slideshow-container fade">
+        <div class="mainWrap">
+            {% for remainingItem in remaining %}
+                <div class="mainCard">
+                    <div class="innerCard remainingCard">
+                        <div class="jobTitle jobTitleRemaining">{{remainingItem['jobTitle']}}</div>
+                        <div class="film">{{remainingItem['companyName']}}</div>
+                        <div class="film">{{remainingItem['location']}}</div>
+                        <div class="fullCard" method="post">
+                            <form class="real_name" id="{{remainingItem['jobID']}}"><button type="submit" class="openLinkButton">OPEN LINK</button></form>
+                        </div>
+                        <div class="opacityGame" id="{{remainingItem['jobID']}}Opacity"></div>
+                        <div class="yesNoCard" id="{{remainingItem['jobID']}}MainDiv">
+                            <div class="jobTitle jobTitleRemaining">{{remainingItem['jobTitle']}}</div>
+                            <br>
+                            <div class="buttons">
+                                <form class="rightTick" id="{{remainingItem['jobID']}}tick"><button type="submit" class="yesButton">Yes, I have filled</button></form>
+                                <form class="rightTick"><button type="submit" class="noButton">NO, I'll do it later</button></form>
+                                <form class="rightTick" id="{{remainingItem['jobID']}}delete"><button type="submit" class="delButton">Delete</button></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>  
+        <div class="mainWrap">
+            {% for completedItem in completed %}
+                <div class="mainCard">
+                    <div class="innerCard completedCard">
+                        <div class="jobTitle jobTitleCompleted">{{completedItem['jobTitle']}}</div>
+                        <div class="film">{{completedItem['companyName']}}</div>
+                        <div class="film">{{completedItem['location']}}</div>
+                        <div class="fullCard" method="post">
+                            <form class="real_name" id="{{completedItem['jobID']}}"><button type="submit" class="openLinkButton">OPEN LINK</button></form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>  
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    {% for remainingItem in remaining %}
+        <script type="text/javascript">
+            $(document).on('submit', "#{{remainingItem['jobID']}}", function(e) {
+                e.preventDefault();
+                console.log("CLicked");
+                $("#{{remainingItem['jobID']}}MainDiv").css("display", "flex");
+                $("#{{remainingItem['jobID']}}Opacity").css("display", "flex");
+                $("#{{remainingItem['jobID']}}").css("display", "none");
+                window.open("{{remainingItem['link']}}","_blank")
+                $.ajax({type: 'POST',url: '/',data: {functionName: "{{remainingItem['jobID']}}"}});
+            })
+            $(document).on('submit', "#{{remainingItem['jobID']}}tick", function(e) {
+                e.preventDefault();
+                window.location.replace("http://127.0.0.1:5000/");
+                $.ajax({type: 'POST',url: '/',data: {functionName: "{{remainingItem['jobID']}}tick"}});
+            });
+            $(document).on('submit', "#{{remainingItem['jobID']}}delete", function(e) {
+                e.preventDefault();
+                window.location.replace("http://127.0.0.1:5000/");
+                $.ajax({type: 'POST',url: '/',data: {functionName: "{{remainingItem['jobID']}}delete"}});
+            });
+        </script>
+    {% endfor %}
+
+    {% for completedItem in completed %}
+        <script type="text/javascript">
+            $(document).on('submit', "#{{completedItem['jobID']}}", function(e) {
+                e.preventDefault();
+                console.log("CLicked");
+                window.open("{{completedItem['link']}}","_blank")
+            })
+        </script>
+    {% endfor %}
+    
+</body>
+</html>
